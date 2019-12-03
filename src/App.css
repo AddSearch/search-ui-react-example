@@ -1,0 +1,16 @@
+.App {
+  font-family: Verdana, sans-serif;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
