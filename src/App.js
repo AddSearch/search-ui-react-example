@@ -28,7 +28,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <SearchField ui={this.addSearchUI}
-                       button="Hae" />
+                       button="Search"
+                       searchAsYouType={true} />
         </header>
 
         <main>
