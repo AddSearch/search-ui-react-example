@@ -1,12 +1,12 @@
 # Search UI - React Example
 
-An example how to use [AddSearch Search UI Library](https://github.com/AddSearch/search-ui) with React. 
+This is an example how to use [AddSearch Search UI Library](https://github.com/AddSearch/search-ui) with React. 
 This example is based on the [create-react-app](https://github.com/facebook/create-react-app) project.
 
 AddSearch UI library is a tool to create fast, mobile-friendy, and cross-browser compatible search solutions quickly and 
 effortlessly.
 
-## How to use components
+## Components
 
 All AddSearch UI components are wrapped to React components with corresponding names. 
 Props passed to the React component are used for initializing Search UI components.
@@ -34,3 +34,7 @@ searchui.searchField({
 npm install
 npm run start
 ```
+
+## Support
+Feel free to send any questions, ideas and suggestions at [support@addsearch.com](mailto:support@addsearch.com) or visit
+[addsearch.com](https://www.addsearch.com/) for more information.
