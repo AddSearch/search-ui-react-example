@@ -3,17 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "addsearch-js-client": "^0.4.0",
-    "addsearch-search-ui": "^0.4.0",
+    "addsearch-js-client": "^0.8.7",
+    "addsearch-search-ui": "^0.7.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "3.4.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

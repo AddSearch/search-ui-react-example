@@ -5,6 +5,7 @@ export default class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.id = 'addsearch-ui-' + ('' + Math.random()).split('.')[1];
+    this.containerEl = null;
   }
 
   componentDidMount() {
@@ -12,6 +13,14 @@ export default class SearchResults extends Component {
       containerId: this.id,
       ...this.props
     });
+
+    this.containerEl = document.getElementById(this.id);
+    this.containerEl.addEventListener('click', handleElementClick);
+
+  }
+
+  componentWillUnmount() {
+    this.containerEl.removeEventListener('click', handleElementClick);
   }
 
   render() {
@@ -20,3 +29,9 @@ export default class SearchResults extends Component {
     );
   }
 }
+
+export const handleElementClick = (event) => {
+  if (event.target.classList.contains('hit')) {
+    console.log('handleElementClick', event.target.querySelector('a').textContent);
+  }
+};

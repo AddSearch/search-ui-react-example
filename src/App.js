@@ -5,6 +5,32 @@ import AddSearchUI from 'addsearch-search-ui';
 import SearchField from './components/SearchField';
 import SearchResults from './components/SearchResults';
 import Pagination from './components/Pagination';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
+export const SEARCHRESULTS_TEMPLATE = `
+  <div class="addsearch-searchresults">    
+    {{#if resultcount}}
+      {{> numberOfResultsTemplate }}
+    {{/if}}
+    
+    {{#each hits}}
+      <div class="hit{{#equals type "PROMOTED"}} promoted{{/equals}}" >
+        <h3>
+          <a href="{{url}}" data-analytics-click="{{id}}">{{#if title}} {{title}} {{else}} {{removeTrailingQueriesFromUrl url}} {{/if}}</a>
+        </h3>
+        <div class="highlight">
+          {{> searchResultImageTemplate}}
+          {{{highlight}}}{{#not type "PROMOTED"}}&#8230;{{/not}}
+        </div>
+        {{#gt categories.length 1}}
+          <div class="category">
+            {{selectCategory ..}}
+          </div>
+        {{/gt}}
+      </div>
+    {{/each}}
+  </div>
+`;
 
 class App extends Component {
 
@@ -25,19 +51,42 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <SearchField ui={this.addSearchUI}
-                       button="Search"
-                       searchAsYouType={true} />
-        </header>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/search">Search</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <main>
-          <SearchResults ui={this.addSearchUI} />
-          <Pagination ui={this.addSearchUI} />
-        </main>
-      </div>
+          <Routes>
+            <Route path="/search" element={
+              <div className="App">
+                <header className="App-header">
+                  <SearchField ui={this.addSearchUI}
+                               button="Search"
+                               searchAsYouType={true} />
+                </header>
+
+                <main>
+                  <SearchResults ui={this.addSearchUI} template={SEARCHRESULTS_TEMPLATE} />
+                  <Pagination ui={this.addSearchUI} />
+                </main>
+              </div>
+            }>
+            </Route>
+            <Route path="/" element={<span>Home</span>}>
+            </Route>
+          </Routes>
+        </div>
+      </Router>
     );
+
   }
 }
 
